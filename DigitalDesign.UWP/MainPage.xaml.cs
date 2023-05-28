@@ -28,15 +28,30 @@ namespace DigitalDesign.UWP
 
 			if (file != null)
 			{
-				string text = await FileIO.ReadTextAsync(file);
+				var text = await FileIO.ReadTextAsync(file);
+
+				var exampleType = typeof(WorkWithString);
+				MethodInfo method = exampleType.GetMethod("GetDictionary", BindingFlags.NonPublic | BindingFlags.Static);
+				var dict = method.Invoke(null, new object[] { text }) as Dictionary<string, int>;
+				string result = string.Empty;
+				foreach (var item in dict)
+				{
+					result += $"{item.Key} - {item.Value}\n";
+				}
+
+				saveButton.IsEnabled = true;
 				previewTextBlock.Text = text;
 				fileNameTextBlock.Text = file.DisplayName + file.FileType;
-				saveButton.IsEnabled = true;
-				MethodInfo method = typeof(ConvertString).GetMethod("ToDictionary", BindingFlags.NonPublic | BindingFlags.Instance);
-				var convertString = new ConvertString();
-				Dictionary<string, int>  keyValuePairs = method.Invoke(convertString, new object[] { text }) as Dictionary<string, int>;
-				var result = keyValuePairs.Select(kvp => kvp.ToString());
-				listOfNameTextBlock.Text = string.Join(", ", result);
+				listOfNameTextBlock.Text = result;
+
+				await WorkWithString.GetDictionaryAsync(text);
+				WorkWithString.GetDictionaryThread(text);
+				WorkWithString.GetDictionaryParallel(text);
+
+				regularTextBlock.Text = WorkWithString.RegularTime.ToString() + " ms";
+				taskTextBlock.Text = WorkWithString.TaskAsyncTime.ToString() + " ms";
+				threadTextBlock.Text = WorkWithString.ThreadTime.ToString() + " ms";
+				parallelTextBlock.Text = WorkWithString.ParallelTime.ToString() + " ms";
 			}
 		}
 
