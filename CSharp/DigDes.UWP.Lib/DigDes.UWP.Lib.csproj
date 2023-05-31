@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{654913E3-5F9C-42C2-B423-BBF83C796EBA}</ProjectGuid>
+    <ProjectGuid>{2FE79DC8-404D-4E56-96FC-790BA8AF77B6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DigitalDesign.UWPLib</RootNamespace>
-    <AssemblyName>DigitalDesign.UWPLib</AssemblyName>
+    <RootNamespace>DigDes.UWP.Lib</RootNamespace>
+    <AssemblyName>DigDes.UWP.Lib</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
@@ -120,19 +120,15 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="WorkWithString.cs" />
+    <Compile Include="ClassWithPtivateMethod.cs" />
+    <Compile Include="ProcessesAndThreed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\DigitalDesign.UWPLib.rd.xml" />
+    <Compile Include="Reflection.cs" />
+    <EmbeddedResource Include="Properties\DigDes.UWP.Lib.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="AngleSharp">
-      <Version>1.0.1</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.14</Version>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.3</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

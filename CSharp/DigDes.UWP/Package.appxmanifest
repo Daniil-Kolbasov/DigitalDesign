@@ -7,14 +7,14 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="8bd08f6f-f7cb-4574-b064-0038f18407ea"
+    Name="832a7268-17b5-4b43-bfa2-89f83780e224"
     Publisher="CN=Daniil"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="8bd08f6f-f7cb-4574-b064-0038f18407ea" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="832a7268-17b5-4b43-bfa2-89f83780e224" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>DigitalDesign.UWP</DisplayName>
+    <DisplayName>DigDes.UWP</DisplayName>
     <PublisherDisplayName>Daniil</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="DigitalDesign.UWP.App">
+      EntryPoint="DigDes.UWP.App">
       <uap:VisualElements
-        DisplayName="DigitalDesign.UWP"
+        DisplayName="DigDes.UWP"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="DigitalDesign.UWP"
+        Description="DigDes.UWP"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

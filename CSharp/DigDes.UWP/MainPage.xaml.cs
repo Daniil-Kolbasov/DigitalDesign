@@ -4,18 +4,23 @@ using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using System.Reflection;
-using DigitalDesign.UWPLib;
 using System.Collections.Generic;
 using System.Linq;
+using DigDes.UWP.Lib;
 
-namespace DigitalDesign.UWP
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+
+namespace DigDes.UWP
 {
-	public sealed partial class MainPage : Page
-	{
-		public MainPage()
-		{
-			this.InitializeComponent();
-		}
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class MainPage : Page
+    {
+        public MainPage()
+        {
+            this.InitializeComponent();
+        }
 
 		private async void openButton_Click(object sender, RoutedEventArgs e)
 		{
@@ -30,11 +35,11 @@ namespace DigitalDesign.UWP
 			{
 				var text = await FileIO.ReadTextAsync(file);
 
-				var exampleType = typeof(WorkWithString);
-				MethodInfo method = exampleType.GetMethod("GetDictionary", BindingFlags.NonPublic | BindingFlags.Static);
-				var dict = method.Invoke(null, new object[] { text }) as Dictionary<string, int>;
+				ClassWithPtivateMethod classWithPtivateMethod = new ClassWithPtivateMethod();
+				var dict1 = classWithPtivateMethod.InvokeMethod("GetDictionary", text) as Dictionary<string, int> ?? new Dictionary<string, int>();
+
 				string result = string.Empty;
-				foreach (var item in dict)
+				foreach (var item in dict1)
 				{
 					result += $"{item.Key} - {item.Value}\n";
 				}
@@ -44,14 +49,12 @@ namespace DigitalDesign.UWP
 				fileNameTextBlock.Text = file.DisplayName + file.FileType;
 				listOfNameTextBlock.Text = result;
 
-				await WorkWithString.GetDictionaryAsync(text);
-				WorkWithString.GetDictionaryThread(text);
-				WorkWithString.GetDictionaryParallel(text);
+				var dict = await ProcessesAndThreed.GetTimeOfProcessingMethod(text);
 
-				regularTextBlock.Text = WorkWithString.RegularTime.ToString() + " ms";
-				taskTextBlock.Text = WorkWithString.TaskAsyncTime.ToString() + " ms";
-				threadTextBlock.Text = WorkWithString.ThreadTime.ToString() + " ms";
-				parallelTextBlock.Text = WorkWithString.ParallelTime.ToString() + " ms";
+				regularTextBlock.Text = dict["Regular"] + " ms";
+				taskTextBlock.Text = dict["Task"] + " ms";
+				threadTextBlock.Text = dict["Thread"] + " ms";
+				parallelTextBlock.Text = dict["Parallel"] + " ms";
 			}
 		}
 

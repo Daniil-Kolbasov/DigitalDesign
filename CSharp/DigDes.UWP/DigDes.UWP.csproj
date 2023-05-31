@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{41EE32FE-B353-4C84-AE5B-9096902A19B8}</ProjectGuid>
+    <ProjectGuid>{0134F1CE-D1E5-4F3A-BD88-2E8EB35926A4}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DigitalDesign.UWP</RootNamespace>
-    <AssemblyName>DigitalDesign.UWP</AssemblyName>
+    <RootNamespace>DigDes.UWP</RootNamespace>
+    <AssemblyName>DigDes.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
@@ -155,12 +155,11 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DigitalDesign.UWPLib\DigitalDesign.UWPLib.csproj">
-      <Project>{654913e3-5f9c-42c2-b423-bbf83c796eba}</Project>
-      <Name>DigitalDesign.UWPLib</Name>
+    <ProjectReference Include="..\DigDes.UWP.Lib\DigDes.UWP.Lib.csproj">
+      <Project>{2fe79dc8-404d-4e56-96fc-790ba8af77b6}</Project>
+      <Name>DigDes.UWP.Lib</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
