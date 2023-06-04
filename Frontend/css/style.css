@@ -3,10 +3,12 @@ BODY {
     background: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
+    font-family: Arial;
+    font-size: 10pt;
 }
 
 main {
-  flex-grow: 1;
+    flex-grow: 1;
 }
 
 .header {
@@ -20,7 +22,6 @@ main {
 
 .header-item {
     text-align: center;
-    font-family: Verdana;
     padding: 15px;
     font-size: 15pt;
     text-decoration: none;
@@ -55,7 +56,6 @@ main {
 .center-content-item {
     flex: 5;
     padding: 0px 10px;
-    font-size: 12pt;
 }
 
 .right-content-item {
@@ -66,45 +66,43 @@ main {
     border-radius: 5px;
 }
 
-.weather {
+.weather-forecast {
     display: flex;
     flex-direction: column;
     background-color: rgba(122, 122, 122, 0.171);
-    border: 1px gray solid;
+    border: 2px gray solid;
     border-radius: 5px;
-}
-
-.weather-item {
-    margin: 10px;
-}
-
-.weather-forecast {
-    display: flex;
-    flex-direction: row;
-    margin-left: 0px;
-    padding-left: 0px;
-}
-
-.weather-forecast-item {
-    background-color: rgba(255, 113, 113, 0.171);
-    border: 1px gray solid;
-    border-radius: 5px;
-    list-style-type: none;
-    margin: 10px;
+    margin: 0px 2px;
     padding: 10px;
 }
 
 .block {
-    /* display: flex;
-    flex-direction: row; */
     text-decoration: none;
     color: black;
+}
+
+.input-block {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-input-block-item {
+    flex: 2
+}
+
+.right-input-block-item {
+    flex: 5
 }
 
 .icon {
     width: 50px;
     height: 50px;
 }
+
+.fieldsetForm {
+    border-radius: 5px;
+}
+
 
 footer {
     flex-shrink: 0;

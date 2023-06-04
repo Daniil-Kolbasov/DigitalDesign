@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Daniil Kolbasov">
-    <title>Welcome to C#</title>
+    <title>Прогноз погоды от OpenWeatherMap</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
@@ -20,139 +20,166 @@
         </div>
         <div class="content">
             <div class="left-content-item"></div>
+
             <div class="center-content-item">
-                <div class="weather">
-                    <h1 class="weather-item" style="font-size: 18pt;"><b>Погода в Лондоне</b></h1>
-                    <ul class="weather-item weather-forecast">
-                        <li class="weather-forecast-item">
-                            <a class="block" href="http://localhost:2040">
-                                <div>
-                                    <div>Днём</div>
-                                    <img class="icon" src="image/01d@2x.png" alt="01d@2x">
-                                    <div>+15</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="weather-forecast-item">
-                            <a class="block" href="http://localhost:2040">
-                                <div>
-                                    <div>Ночью</div>
-                                    <img class="icon" src="image/01n@2x.png" alt="01n@2x">
-                                    <div>+10</div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="weather-forecast">
+                    <h1 id="cityName" style="font-size: 18pt;">Укажите город</h1>
+
+                    <div id="icon"></div>
+
+                    <div id="temp"></div>
+                    
+                    <div id="desc"></div>
+
+                    <div id="clouds"></div>
+
+                    <div id="speedWind"></div>
                 </div>
                 <br>
-                <fieldset style="border-radius: 5px;">
+
+                <fieldset class="fieldsetForm">
                     <legend>Узнать погоду</legend>
-                    <select id="weatherOption" name="weatherOption" style="width: max-content;">
-                        <option value="city">По городу</option>
-                        <option value="coordinate">По координатам</option>
-                    </select>
-                    <form method="post" action="http://localhost/auth/login">
-                        <p>
-                            <label for="apiKey">API key*</label> <input id="apiKey" type="text" name="apiKey">
-                        </p>
-                        <br>
 
-                        <p>
-                            <label for="latitude">Широта*</label> <input id="latitude" type="number" name="latitude">
-                        </p>
-                        <p>
-                            <label for="longitude">Долгота*</label> <input id="longitude" type="number"
+                    <!-- <div class="input-block">
+                        <label class="left-input-block-item" for="searchFortsOption">Формат поиска (реализую в
+                            React):</label>
+                        <select class="right-input-block-item" id="searchFortsOption" name="weatherOption"
+                            style="width: max-content;">
+                            <option value="coordinate">По координатам</option>
+                            <option value="city">По городу</option>
+                        </select>
+                    </div>
+                    <br> -->
+
+                    <fieldset class="fieldsetForm">
+                        <legend id="searchFortsHeader">Поиска по координатам:</legend>
+
+                        <div class="input-block">
+                            <label class="left-input-block-item" for="apiKey">API key*</label>
+                            <input class="right-input-block-item" id="apiKey" type="text" name="apiKey"
+                                value="ee257dbd0ed86a0af037f66b8325c6f5" readonly>
+                        </div>
+
+                        <div class="input-block">
+                            <label class="left-input-block-item" for="latitude">Широта*</label>
+                            <input class="right-input-block-item" id="latitude" value="44.34" type="number"
+                                name="latitude">
+                        </div>
+
+                        <div class="input-block">
+                            <label class="left-input-block-item" for="longitude">Долгота*</label>
+                            <input class="right-input-block-item" id="longitude" value="10.99" type="number"
                                 name="longitude">
-                        </p>
-                        <br>
+                        </div>
+                    </fieldset>
+                    <br>
 
-                        <div>Фортам ответа</div>
-                        <p>
-                            <input type="radio" value="json" name="fotmat" checked=""> JSON
-                        </p>
-                        <p>
-                            <input type="radio" value="xml" name="fotmat"> XML
-                        </p>
-                        <br>
+                    <!-- <fieldset class="fieldsetForm">
+                        <legend>Фортам ответа:</legend>
 
-                        <div>Еденица измеерния</div>
-                        <p>
-                            <input type="radio" value="standard" name="units" checked=""> Стандартный
-                        </p>
-                        <p>
-                            <input type="radio" value="metric" name="units"> Метрический
-                        </p>
-                        <p>
-                            <input type="radio" value="imperial" name="units"> Имперский
-                        </p>
-                        <br>
+                        <div>
+                            <input type="radio" id="jsonRadio" name="modes" value="json" checked>
+                            <label for="jsonRadio">JSON</label>
+                        </div>
 
-                        <div>Язык</div>
-                        <p>
-                            <select id="languageOption" name="languageOption" style="width: max-content;">
-                                <option value="af">Afrikaans</option>
-                                <option value="al">Albanian</option>
-                                <option value="ar">Arabic</option>
-                                <option value="az">Azerbaijani</option>
-                                <option value="bg">Bulgarian</option>
-                                <option value="ca">Catalan</option>
-                                <option value="cz">Czech</option>
-                                <option value="da">Danish</option>
-                                <option value="de">German</option>
-                                <option value="el">Greek</option>
-                                <option value="en">English</option>
-                                <option value="eu">Basque</option>
-                                <option value="fa">Persian (Farsi)</option>
-                                <option value="fi">Finnish</option>
-                                <option value="fr">French</option>
-                                <option value="gl">Galician</option>
-                                <option value="he">Hebrew</option>
-                                <option value="hi">Hindi</option>
-                                <option value="hr">Croatian</option>
-                                <option value="hu">Hungarian</option>
-                                <option value="id">Indonesian</option>
-                                <option value="it">Italian</option>
-                                <option value="ja">Japanese</option>
-                                <option value="kr">Korean</option>
-                                <option value="la">Latvian</option>
-                                <option value="lt">Lithuanian</option>
-                                <option value="mk">Macedonian</option>
-                                <option value="no">Norwegian</option>
-                                <option value="nl">Dutch</option>
-                                <option value="pl">Polish</option>
-                                <option value="pt">Portuguese</option>
-                                <option value="pt_br">Português Brasil</option>
-                                <option value="ro">Romanian</option>
-                                <option value="ru" selected="selected">Russian</option>
-                                <option value="sv, se">Swedish</option>
-                                <option value="sk">Slovak</option>
-                                <option value="sl">Slovenian</option>
-                                <option value="sp, es">Spanish</option>
-                                <option value="sr">Serbian</option>
-                                <option value="th">Thai</option>
-                                <option value="tr">Turkish</option>
-                                <option value="ua, uk">Ukrainian</option>
-                                <option value="vi">Vietnamese</option>
-                                <option value="zh_cn">Chinese Simplified</option>
-                                <option value="zh_tw">Chinese Traditional</option>
-                                <option value="zu">Zulu</option>
-                            </select>
-                        </p>
-                        <br>
+                        <div>
+                            <input type="radio" id="xmlRadio" name="modes" value="xml">
+                            <label for="xmlRadio">XML</label>
+                        </div>
+                    </fieldset>
+                    <br> -->
 
-                        <p>
-                            <input type="submit" value="Войти">
-                        </p>
-                    </form>
+                    <fieldset class="fieldsetForm">
+                        <legend>Еденица измеерния:</legend>
+
+                        <div>
+                            <input type="radio" id="standardRadio" value="standard" name="units" checked>
+                            <label for="standardRadio">Стандартный</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="metricRadio" value="metric" name="units">
+                            <label for="metricRadio">Метрический</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="imperialRadio" value="imperial" name="units">
+                            <label for="imperialRadio">Имперский</label>
+                        </div>
+                    </fieldset>
+                    <br>
+
+                    <div class="input-block">
+                        <label class="left-input-block-item" for="languageOption">Язык</label>
+                        <select class="right-input-block-item" id="languageOption" name="languageOption"
+                            style="width: max-content;">
+                            <option value="af">Afrikaans</option>
+                            <option value="al">Albanian</option>
+                            <option value="ar">Arabic</option>
+                            <option value="az">Azerbaijani</option>
+                            <option value="bg">Bulgarian</option>
+                            <option value="ca">Catalan</option>
+                            <option value="cz">Czech</option>
+                            <option value="da">Danish</option>
+                            <option value="de">German</option>
+                            <option value="el">Greek</option>
+                            <option value="en">English</option>
+                            <option value="eu">Basque</option>
+                            <option value="fa">Persian (Farsi)</option>
+                            <option value="fi">Finnish</option>
+                            <option value="fr">French</option>
+                            <option value="gl">Galician</option>
+                            <option value="he">Hebrew</option>
+                            <option value="hi">Hindi</option>
+                            <option value="hr">Croatian</option>
+                            <option value="hu">Hungarian</option>
+                            <option value="id">Indonesian</option>
+                            <option value="it">Italian</option>
+                            <option value="ja">Japanese</option>
+                            <option value="kr">Korean</option>
+                            <option value="la">Latvian</option>
+                            <option value="lt">Lithuanian</option>
+                            <option value="mk">Macedonian</option>
+                            <option value="no">Norwegian</option>
+                            <option value="nl">Dutch</option>
+                            <option value="pl">Polish</option>
+                            <option value="pt">Portuguese</option>
+                            <option value="pt_br">Português Brasil</option>
+                            <option value="ro">Romanian</option>
+                            <option value="ru" selected="selected">Russian</option>
+                            <option value="sv">Swedish</option>
+                            <option value="sk">Slovak</option>
+                            <option value="sl">Slovenian</option>
+                            <option value="sp">Spanish</option>
+                            <option value="sr">Serbian</option>
+                            <option value="th">Thai</option>
+                            <option value="tr">Turkish</option>
+                            <option value="ua">Ukrainian</option>
+                            <option value="vi">Vietnamese</option>
+                            <option value="zh_cn">Chinese Simplified</option>
+                            <option value="zh_tw">Chinese Traditional</option>
+                            <option value="zu">Zulu</option>
+                        </select>
+                    </div>
+                    <br>
+
+                    <p>
+                        <input id="clickButton" type="submit" value="Показать погоду">
+                    </p>
                 </fieldset>
             </div>
+
             <div class="right-content-item">
                 <div>Источкники</div>
+                <br>
+
                 <a href="https://openweathermap.org/api" target="_top">OpenWeatherMap - Doc API</a>
             </div>
         </div>
     </div>
+
     <footer>Даниил Колбасов</footer>
+
+    <script src="js/openWeatherMap.js"></script>
 </body>
 
 </html>
