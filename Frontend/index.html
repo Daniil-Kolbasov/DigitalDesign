@@ -75,33 +75,53 @@
                                         <div>
                                             <div class="input-block">
                                                 <label class="left-input-block-item" for="searchFortsOption">Формат поиска</label>
-                                                <select class="right-input-block-item" onChange={this.handleClick} id="searchFortsOption" name="weatherOption">
+                                                <select class="right-input-block-item" onChange={this.handleClick} id="searchFortsOption" name="weatherOption" defaultValue="coordinate" >
                                                     <option value="coordinate">По координатам</option>
                                                     <option value="city">По городу</option>
                                                 </select>
                                             </div>
-                                            <Input />
+                                            <Input value={this.state.choose} />
                                         </div>
                                     );
                                 }
                             }
 
-                            function Input() {
-                                return (
-                                    <div id="searchForts">
-                                        <p class="input-block">
-                                            <label class="left-input-block-item" for="latitude">Широта*</label>
-                                            <input class="right-input-block-item" id="latitude" value="44.34" type="number"
-                                                name="latitude"></input>
-                                        </p>
+                            function Input(props) {
+                                if (props.value === "coordinate")
+                                    return (
+                                        <div id="latAndLong">
+                                            <p class="input-block">
+                                                <label class="left-input-block-item" for="latitude">Широта*</label>
+                                                <input class="right-input-block-item" id="latitude" type="number"
+                                                    name="latitude"></input>
+                                            </p>
 
-                                        <p class="input-block">
-                                            <label class="left-input-block-item" for="longitude">Долгота*</label>
-                                            <input class="right-input-block-item" id="longitude" value="10.99" type="number"
-                                                name="longitude"></input>
-                                        </p>
-                                    </div>
-                                )
+                                            <p class="input-block">
+                                                <label class="left-input-block-item" for="longitude">Долгота*</label>
+                                                <input class="right-input-block-item" id="longitude" type="number"
+                                                    name="longitude"></input>
+                                            </p>
+                                        </div>
+                                    )
+                                else
+                                    return (
+                                        <div id="cityAndStateAndCountry ">
+                                            <p class="input-block">
+                                                <label class="left-input-block-item" for="city">Название город*</label>
+                                                <input class="right-input-block-item" id="city" type="text" name="city"></input>
+                                            </p>
+
+                                            <p class="input-block">
+                                                <label class="left-input-block-item" for="state">Код штата (тольео для США)</label>
+                                                <input class="right-input-block-item" id="state" type="number" name="state"></input>
+                                            </p>
+
+                                            <p class="input-block">
+                                                <label class="left-input-block-item" for="country">Код страны</label>
+                                                <input class="right-input-block-item" id="country" type="number" name="country"></input>
+                                            </p>
+                                        </div>
+                                    )
                             }
 
                             ReactDOM.render(<Option choose="coordinate" />, document.getElementById("root"));
