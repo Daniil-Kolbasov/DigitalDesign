@@ -49,7 +49,7 @@
                                 value="ee257dbd0ed86a0af037f66b8325c6f5" readonly>
                         </p>
 
-                        <div id="root"></div>
+                        <p id="root"></p>
 
                         <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
                         <script crossorigin
@@ -69,24 +69,45 @@
                                 handleClick(event) {
                                     this.setState({ choose: event.target.value });
                                 }
-                                
+
                                 render() {
                                     return (
-                                        <p class="input-block">
-                                            <label class="left-input-block-item" for="searchFortsOption">Формат поиска</label>
-                                            <select class="right-input-block-item" onChange={this.handleClick} id="searchFortsOption" name="weatherOption">
-                                                <option value="coordinate">По координатам</option>
-                                                <option value="city">По городу</option>
-                                            </select>
-                                        </p>
+                                        <div>
+                                            <div class="input-block">
+                                                <label class="left-input-block-item" for="searchFortsOption">Формат поиска</label>
+                                                <select class="right-input-block-item" onChange={this.handleClick} id="searchFortsOption" name="weatherOption">
+                                                    <option value="coordinate">По координатам</option>
+                                                    <option value="city">По городу</option>
+                                                </select>
+                                            </div>
+                                            <Input />
+                                        </div>
                                     );
                                 }
+                            }
+
+                            function Input() {
+                                return (
+                                    <div id="searchForts">
+                                        <p class="input-block">
+                                            <label class="left-input-block-item" for="latitude">Широта*</label>
+                                            <input class="right-input-block-item" id="latitude" value="44.34" type="number"
+                                                name="latitude"></input>
+                                        </p>
+
+                                        <p class="input-block">
+                                            <label class="left-input-block-item" for="longitude">Долгота*</label>
+                                            <input class="right-input-block-item" id="longitude" value="10.99" type="number"
+                                                name="longitude"></input>
+                                        </p>
+                                    </div>
+                                )
                             }
 
                             ReactDOM.render(<Option choose="coordinate" />, document.getElementById("root"));
                         </script>
 
-                        <div id="searchForts">
+                        <!-- <div id="searchForts">
                             <p class="input-block">
                                 <label class="left-input-block-item" for="latitude">Широта*</label>
                                 <input class="right-input-block-item" id="latitude" value="44.34" type="number"
@@ -98,7 +119,7 @@
                                 <input class="right-input-block-item" id="longitude" value="10.99" type="number"
                                     name="longitude">
                             </p>
-                        </div>
+                        </div> -->
                     </fieldset>
                     <br>
 
