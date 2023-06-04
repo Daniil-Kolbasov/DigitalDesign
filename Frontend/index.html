@@ -28,7 +28,7 @@
                     <div id="icon"></div>
 
                     <div id="temp"></div>
-                    
+
                     <div id="desc"></div>
 
                     <div id="clouds"></div>
@@ -40,36 +40,89 @@
                 <fieldset class="fieldsetForm">
                     <legend>Узнать погоду</legend>
 
-                    <!-- <div class="input-block">
-                        <label class="left-input-block-item" for="searchFortsOption">Формат поиска (реализую в
-                            React):</label>
-                        <select class="right-input-block-item" id="searchFortsOption" name="weatherOption"
-                            style="width: max-content;">
-                            <option value="coordinate">По координатам</option>
-                            <option value="city">По городу</option>
-                        </select>
-                    </div>
-                    <br> -->
-
                     <fieldset class="fieldsetForm">
-                        <legend id="searchFortsHeader">Поиска по координатам:</legend>
+                        <legend id="searchFortsHeader">Прогноз погоды (параметры)</legend>
 
-                        <div class="input-block">
+                        <p class="input-block">
                             <label class="left-input-block-item" for="apiKey">API key*</label>
                             <input class="right-input-block-item" id="apiKey" type="text" name="apiKey"
                                 value="ee257dbd0ed86a0af037f66b8325c6f5" readonly>
-                        </div>
+                        </p>
 
-                        <div class="input-block">
-                            <label class="left-input-block-item" for="latitude">Широта*</label>
-                            <input class="right-input-block-item" id="latitude" value="44.34" type="number"
-                                name="latitude">
-                        </div>
+                        <div id="root"></div>
 
-                        <div class="input-block">
-                            <label class="left-input-block-item" for="longitude">Долгота*</label>
-                            <input class="right-input-block-item" id="longitude" value="10.99" type="number"
-                                name="longitude">
+                        <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+                        <script crossorigin
+                            src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+                        <script
+                            src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+                        <script type="text/babel">
+                            class Option extends React.Component {
+                                // constructor(props) {
+                                //     super(props);
+                                //     this.state = {
+                                //         choose: "coordinate"
+                                //     }
+                                //     this.click = this.click.bind(this);
+                                // }
+
+                                click(event) {
+                                    const value = event.target.value;
+                                    conosle.log(value);
+                                    // this.setState({ choose: value });
+                                    // console.log(this.state.choose);
+                                }
+
+                                render() {
+                                    return (
+                                        <p class="input-block">
+                                            <label class="left-input-block-item" for="searchFortsOption">Формат поиска</label>
+                                            <select class="right-input-block-item" onChange={this.click} id="searchFortsOption" name="weatherOption">
+                                                <option value="coordinate">По координатам</option>
+                                                <option value="city">По городу</option>
+                                            </select>
+                                        </p>
+                                    );
+                                }
+                            }
+
+                            // function Input(props) {
+                            //     if (this.props.value === "coordinate")
+                            //         return (
+                            //             <div id="searchForts">
+                            //                 <p class="input-block">
+                            //                     <label class="left-input-block-item" for="latitude">Широта*</label>
+                            //                     <input class="right-input-block-item" id="latitude" value="44.34" type="number"
+                            //                         name="latitude"></input>
+                            //                 </p>
+
+                            //                 <p class="input-block">
+                            //                     <label class="left-input-block-item" for="longitude">Долгота*</label>
+                            //                     <input class="right-input-block-item" id="longitude" value="10.99" type="number"
+                            //                         name="longitude"></input>
+                            //                 </p>
+                            //             </div>
+                            //         )
+                            //     else
+                            //         console.log(1);
+                            // }
+
+
+                            ReactDOM.render(<Option />, document.getElementById("root"));
+                        </script>
+
+                        <div id="searchForts">
+                            <p class="input-block">
+                                <label class="left-input-block-item" for="latitude">Широта*</label>
+                                <input class="right-input-block-item" id="latitude" value="44.34" type="number"
+                                    name="latitude">
+                            </p>
+
+                            <p class="input-block">
+                                <label class="left-input-block-item" for="longitude">Долгота*</label>
+                                <input class="right-input-block-item" id="longitude" value="10.99" type="number"
+                                    name="longitude">
+                            </p>
                         </div>
                     </fieldset>
                     <br>
@@ -176,6 +229,8 @@
             </div>
         </div>
     </div>
+
+    <div id="root"></div>
 
     <footer>Даниил Колбасов</footer>
 
