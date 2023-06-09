@@ -2,5 +2,5 @@
 
 Задния, по которому был построен проект:
 
-- [C#](/doc/CSHARP.md) - reflection, процессы и потоки, веб=сервисы
+- [C#](/doc/CSHARP.md) - reflection, процессы и потоки, веб-сервисы
 - [Frontend](/doc/FRONTEND.md) - HTML, CSS, JavaScript, ReactJS
